@@ -1,0 +1,39 @@
+{
+  "name": "firejar",
+  "version": "1.0.0",
+  "description": "A Mongoose-inspired Firestore object modeling tool to make life simpler.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "compile": "tsc",
+    "build": "npm run clean && npm run compile && node dist/SetupPackage.js",
+    "pack": "cd dist && npm pack",
+    "publish": "cd dist && npm publish"
+  },
+  "author": "Bobby Donev <hello@bobbydonev.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobch27/firejar.git"
+  },
+  "keywords": [
+    "firebase",
+    "firestore",
+    "document",
+    "model",
+    "firejar",
+    "schema",
+    "database",
+    "orm",
+    "db"
+  ],
+  "bugs": {
+    "url": "https://github.com/bobch27/firejar/issues"
+  },
+  "homepage": "https://github.com/bobch27/firejar#readme",
+  "devDependencies": {
+    "@types/node": "^18.6.3",
+    "typescript": "^4.7.4"
+  }
+}
