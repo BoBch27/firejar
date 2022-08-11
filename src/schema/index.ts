@@ -65,17 +65,17 @@ async function iterateAndValidate(type: string, collection: string, schema: any,
       if (schema[key].type && !Object.keys(Types).map(type => Types[type]).includes(schema[key].type)) {
         throw new Error(`Invalid type for ${key} in schema`);
       }
-  
-      if (schema[key].required && (!data || !data[key])) {
-        throw new Error(`${key} is required`);
-      }
-  
+      
       if ((schema[key].default || schema[key].default === false || schema[key].default === '' || schema[key].default === 0) && !data[key]) {
         if (typeof schema[key].default === 'function') {
           data[key] = schema[key].default();
         } else {
           data[key] = schema[key].default;
         }
+      }
+      
+      if (schema[key].required && (!data || !data[key])) {
+        throw new Error(`${key} is required`);
       }
     }
     
