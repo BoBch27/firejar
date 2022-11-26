@@ -1,6 +1,6 @@
 {
   "name": "firejar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Mongoose-inspired Firestore object modeling tool to make life simpler.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

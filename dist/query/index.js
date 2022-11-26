@@ -34,6 +34,18 @@ class Query {
         this.limitTo = limitTo;
         return this;
     }
+    limitToLast(limitFrom) {
+        this.limitFrom = limitFrom;
+        return this;
+    }
+    startAfter(startItem) {
+        this.startItem = startItem;
+        return this;
+    }
+    endBefore(endItem) {
+        this.endItem = endItem;
+        return this;
+    }
     offset(offsetTo) {
         this.offsetTo = offsetTo;
         return this;
@@ -49,6 +61,15 @@ class Query {
             }
             if (this.limitTo) {
                 query = query.limit(this.limitTo);
+            }
+            if (this.limitFrom) {
+                query = query.limitToLast(this.limitFrom);
+            }
+            if (this.startItem) {
+                query = query.startAfter(this.startItem);
+            }
+            if (this.endItem) {
+                query = query.endBefore(this.endItem);
             }
             if (this.offsetTo) {
                 query = query.offset(this.offsetTo);

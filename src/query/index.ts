@@ -19,6 +19,9 @@ class Query {
   private orderByField?: string;
   private orderType: string = 'asc';
   private limitTo?: number;
+  private limitFrom?: number;
+  private startItem?: object;
+  private endItem?: object;
   private offsetTo?: number;
   
   constructor(collection: string, schema: typeof Schema) {
@@ -42,6 +45,21 @@ class Query {
     return this;
   }
 
+  limitToLast(limitFrom: number): Query {
+    this.limitFrom = limitFrom;
+    return this;
+  }
+
+  startAfter(startItem: object): Query {
+    this.startItem = startItem;
+    return this;
+  }
+
+  endBefore(endItem: object): Query {
+    this.endItem = endItem;
+    return this;
+  }
+
   offset(offsetTo: number): Query {
     this.offsetTo = offsetTo;
     return this;
@@ -60,6 +78,18 @@ class Query {
 
     if (this.limitTo) {
       query = query.limit(this.limitTo);
+    }
+
+    if (this.limitFrom) {
+      query = query.limitToLast(this.limitFrom);
+    }
+
+    if (this.startItem) {
+      query = query.startAfter(this.startItem);
+    }
+
+    if (this.endItem) {
+      query = query.endBefore(this.endItem);
     }
 
     if (this.offsetTo) {
